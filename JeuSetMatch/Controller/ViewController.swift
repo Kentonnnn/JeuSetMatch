@@ -13,11 +13,13 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet var player1SetScoreLabels: [UILabel]!
     @IBOutlet var player2SetScoreLabels: [UILabel]!
-    lazy var playerSetScoreLabels: [Player: [UILabel]] = [Player.one: player1SetScoreLabels, Player.two: player2SetScoreLabels]
+    lazy var playerSetScoreLabels:
+    [Player: [UILabel]] = [Player.one: player1SetScoreLabels, Player.two: player2SetScoreLabels]
 
     @IBOutlet weak var player1GameScoreLabel: UILabel!
     @IBOutlet weak var player2GameScoreLabel: UILabel!
-    lazy var playerGameScoreLabels: [Player: UILabel] = [Player.one: player1GameScoreLabel, Player.two: player2GameScoreLabel]
+    lazy var playerGameScoreLabels: [Player: UILabel] =
+    [Player.one: player1GameScoreLabel, Player.two: player2GameScoreLabel]
 
     @IBOutlet weak var infoLabel: UILabel!
 
@@ -62,12 +64,12 @@ class ViewController: UIViewController {
     }
 
     private func updateAllSetsScore(forPlayer player: Player) {
-        for i in 0..<5 {
-            if i < match.sets.count {
-                let set = match.sets[i]
-                playerSetScoreLabels[player]![i].text = "\(set.scores[player]!)"
+        for setScore in 0..<5 {
+            if setScore < match.sets.count {
+                let set = match.sets[setScore]
+                playerSetScoreLabels[player]![setScore].text = "\(set.scores[player]!)"
             } else {
-                playerSetScoreLabels[player]![i].text = ""
+                playerSetScoreLabels[player]![setScore].text = ""
             }
         }
     }
@@ -113,4 +115,3 @@ class ViewController: UIViewController {
         infoLabel.text = "Qui a gagné le point ?"
     }
 }
-
